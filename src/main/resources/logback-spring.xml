@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- コンソールへのログ出力設定 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- ログの出力形式の設定 -->
+        <encoder>
+            <!-- ログの出力形式の設定 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ルートのログレベルを設定 -->
+    <root level="INFO">
+        <!-- ログの出力先をコンソールに設定 -->
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- 特定のパッケージに対するログ設定 -->
+    <logger name="com.example.Study.aspect.LoggingAspect" level="INFO" />
+    <logger name="com.example.Study.controllers.HelloController" level="INFO" />
+    <logger name="com.example.Study.controllers.ByeController" level="INFO" />
+
+</configuration>

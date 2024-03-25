@@ -1,13 +1,12 @@
-package com.study;
-
+package com.Customer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudyApplication {
+public class MainApplication {
 
-	// Mainクラス(実行用)
     public static void main(String[] args) {
-        SpringApplication.run(StudyApplication.class, args);
+        SpringApplication.run(MainApplication.class, args);
     }
+
 }

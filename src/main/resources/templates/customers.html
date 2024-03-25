@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>顧客情報</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>顧客情報検索</h1>
+	<form action="#" th:action="@{/search}" method="get">
+		<input type="text" name="customerId" placeholder="検索したい顧客IDを入力">
+		<input type="submit" value="検索"><br>
+	</form>
+	<h1>顧客情報登録</h1>
+	<form action="#" th:action="@{/customers}" th:object="${customer}" method="post">
+		<input type="text" th:field="*{lastName}" placeholder="姓"><br>
+		<input type="text" th:field="*{firstName}" placeholder="名"><br>
+		<input type="text" th:field="*{email}" placeholder="メールアドレス"><br>
+		<input type="text" th:field="*{phoneNumber}" placeholder="電話番号"><br>
+		<input type="text" th:field="*{country}" placeholder="国"><br>
+		<input type="text" th:field="*{postalCode}" placeholder="郵便番号"><br>
+		<input type="text" th:field="*{city}" placeholder="市区町村"><br>
+		<input type="text" th:field="*{address}" placeholder="住所"><br>
+		<br>
+		<input type="submit" value="新規登録">
+	</form>
+	<form action="#" th:action="@{/update}" th:object="${customer}" method="post">
+		<input type="hidden" th:field="*{customerId}"><br>
+		<input type="hidden" th:field="*{lastName}"><br>
+		<input type="hidden" th:field="*{firstName}"><br>
+		<input type="hidden" th:field="*{email}"><br>
+		<input type="hidden" th:field="*{phoneNumber}"><br>
+		<input type="hidden" th:field="*{country}"><br>
+		<input type="hidden" th:field="*{postalCode}"><br>
+		<input type="hidden" th:field="*{city}"><br>
+		<input type="hidden" th:field="*{address}"><br>
+		<input type="submit" value="更新">
+	</form>
+	<form action="#" th:action="@{/delete}" method="post">
+		<input type="text" name="customerId" placeholder="削除したい顧客IDを入力">
+		<input type="submit" value="削除">
+	</form>
+	<p th:if="${message}" th:text="${message}"></p>
+	<h1>登録者リスト</h1>
+	<table>
+		<tr>
+			<th>顧客ID</th>
+			<th>姓</th>
+			<th>名</th>
+			<th>メールアドレス</th>
+			<th>電話番号</th>
+			<th>国</th>
+			<th>郵便番号</th>
+			<th>市区町村</th>
+			<th>住所</th>
+		</tr>
+		<tr th:each="customer : ${customers}">
+			<td th:text="${customer.customerId}"></td>
+			<td th:text="${customer.lastName}"></td>
+			<td th:text="${customer.firstName}"></td>
+			<td th:text="${customer.email}"></td>
+			<td th:text="${customer.phoneNumber}"></td>
+			<td th:text="${customer.country}"></td>
+			<td th:text="${customer.postalCode}"></td>
+			<td th:text="${customer.city}"></td>
+			<td th:text="${customer.address}"></td>
+		</tr>
+	</table>
+</body>
+
+</html>
